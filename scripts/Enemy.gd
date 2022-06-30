@@ -3,6 +3,9 @@ extends KinematicBody2D
 var player
 var _under_cool_down:bool = false
 var _random
+var orientation 
+var motion:Vector2
+var walk_animation_manager
 
 export var speed = 100
 export var damage = 5.0
@@ -16,13 +19,17 @@ func _ready():
 	#warning-ignore:return_value_discarded
 	health.connect("health_updated", health_bar, "update_values")	
 	health.connect("has_died", self, "dies")
+	walk_animation_manager = get_node_or_null("WalkAnimationManager")
 	player = get_tree().get_root().find_node("Player", true, false)
 	_random = RandomNumberGenerator.new()
-#	connect("has_hit_enemy", self, "_on_hit")
 
 
 func _physics_process(delta):
-	var collision = move_and_collide(position.direction_to(player.position).normalized() * speed * delta)
+	motion =  position.direction_to(player.position).normalized()
+	if walk_animation_manager != null:
+		orientation = walk_animation_manager.get_orientation_according_to(motion)
+		walk_animation_manager.play_animation_corresponding_to_orientation(orientation)
+	var collision = move_and_collide(motion * speed * delta)
 	if collision != null and collision.collider == player :
 		if not _under_cool_down :
 			var coef = _random.randf_range(0.0, 2.0)
@@ -47,11 +54,3 @@ func hurt(damage:float, crit:bool) -> void :
 func dies() -> void:
 	call_deferred("queue_free")
 
-#func _on_hit(enemy:Node2D, damage) -> void:
-#	print("Gets a hit signal")
-#	if enemy == self :
-#		print("Touché ! " + str(damage))
-#		health -= damage
-#		if health <= 0 :
-#			print("Mort !")
-#			call_deferred("queue_free")

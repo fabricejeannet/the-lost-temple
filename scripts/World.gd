@@ -1,6 +1,7 @@
 extends TileMap
 
 var StoneCat = preload("res://scenes/StoneCat.tscn")
+var Kabuto = preload("res://scenes/Kabuto.tscn")
 var enemies = []
 var random
 
@@ -16,6 +17,13 @@ func _on_StoneCatTimer_timeout():
 	_add_enemy(stone_cat)
 
 
+func _on_KabutoTimer_timeout():
+	var kabuto = Kabuto.instance()
+	kabuto.position = _get_random_position()
+	_add_enemy(kabuto)
+
+
+
 func _add_enemy(enemy:Node2D) -> void:
 	if enemies.size() < max_enemies:
 		add_child(enemy)
@@ -27,3 +35,5 @@ func _get_random_position() -> Vector2:
 	var xpos = random.randf_range(0, get_viewport().size.x)
 	var ypos = random.randf_range(0, get_viewport().size.y)
 	return Vector2(xpos, ypos)
+
+
