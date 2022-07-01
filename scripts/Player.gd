@@ -2,13 +2,9 @@ extends KinematicBody2D
 
 const MOTION_SPEED = 200.0 # Pixels/second.
 
-
-
 var orientation
 var health_bar:ProgressBar
 
-
-#onready var animation_player:AnimationPlayer = $AnimationPlayer
 onready var walk_animation_manager = $WalkAnimationManager
 onready var health:HealthNode = $HeatlhNode
 onready var sight = $Sight/Sprite
@@ -33,8 +29,6 @@ func compute_motion() -> Vector2:
 	motion.y /= 2
 	motion = motion.normalized() * MOTION_SPEED
 	return motion
-
-
 
 
 func hurt(damage:float, crit:bool) -> void : 

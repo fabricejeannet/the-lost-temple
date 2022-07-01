@@ -26,6 +26,7 @@ position = Vector2( 173, 98 )
 
 [node name="StoneCatTimer" type="Timer" parent="World"]
 wait_time = 2.0
+autostart = true
 
 [node name="KabutoTimer" type="Timer" parent="World"]
 wait_time = 4.0
