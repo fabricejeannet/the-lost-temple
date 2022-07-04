@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://resources/grass_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/World.gd" type="Script" id=3]
 [ext_resource path="res://scripts/HealthBar.gd" type="Script" id=4]
 [ext_resource path="res://scenes/ShurikenSkill.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/ShieldOfFireSkill.tscn" type="PackedScene" id=6]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.227451, 0.694118, 0.0941176, 1 )
@@ -23,6 +24,8 @@ max_enemies = 10
 position = Vector2( 173, 98 )
 
 [node name="ShurikenSkill" parent="World/Player" instance=ExtResource( 5 )]
+
+[node name="ShieldOfFireSkill" parent="World/Player" instance=ExtResource( 6 )]
 
 [node name="StoneCatTimer" type="Timer" parent="World"]
 wait_time = 2.0

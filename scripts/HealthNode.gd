@@ -13,7 +13,7 @@ onready var health_timer  = $HealthTimer
 
 func _ready() -> void:
 	_set_current_points(max_points)
-	print("Initializing health node. Max : " + str(max_points) + " current : " + str(current_points))
+#	print("Initializing health node. Max : " + str(max_points) + " current : " + str(current_points))
 
 func get_max_points() -> int :
 	return max_points
