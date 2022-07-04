@@ -34,7 +34,6 @@ hframes = 9
 anims/spin = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2( 1, 1 )
 shape = SubResource( 3 )
 
 [connection signal="body_entered" from="." to="." method="_on_ShieldOfFire_body_entered"]

@@ -1,7 +1,7 @@
 extends Node2D
 
 var player
-var ShieldOfFire = preload("res://scenes/ShieldOfFire.tscn")
+var ShieldOfFire = preload("res://scenes/skills/ShieldOfFire.tscn")
 
 
 func _ready():

@@ -18,6 +18,7 @@ onready var health:HealthNode = $HeatlhNode
 func _ready():
 	#warning-ignore:return_value_discarded
 	health.connect("health_updated", health_bar, "update_values")	
+	#warning-ignore:return_value_discarded
 	health.connect("has_died", self, "dies")
 	walk_animation_manager = get_node_or_null("WalkAnimationManager")
 	player = get_tree().get_root().find_node("Player", true, false)
@@ -45,10 +46,10 @@ func _start_cool_down() -> void:
 	_under_cool_down = true
 	yield(get_tree().create_timer(cool_down_duration), "timeout")
 	_under_cool_down = false
-	
 
-func hurt(damage:float, crit:bool) -> void : 
-	health.consume(int(damage))
+
+func hurt(_damage:float, _crit:bool) -> void : 
+	health.consume(int(_damage))
 
 
 func dies() -> void:

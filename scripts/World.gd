@@ -1,7 +1,7 @@
 extends TileMap
 
-var StoneCat = preload("res://scenes/StoneCat.tscn")
-var Kabuto = preload("res://scenes/Kabuto.tscn")
+var StoneCat = preload("res://scenes/enemies/StoneCat.tscn")
+var Kabuto = preload("res://scenes/enemies/Kabuto.tscn")
 var enemies = []
 var random
 

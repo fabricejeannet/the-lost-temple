@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/shield of fire.png-7bf1a75132933052178e79e7d3e97931.stex"
+path="res://.import/skull.png-8f9ad34e6c9a80813450a4ff0f095169.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/shield of fire.png"
-dest_files=[ "res://.import/shield of fire.png-7bf1a75132933052178e79e7d3e97931.stex" ]
+source_file="res://assets/img/spells/skull.png"
+dest_files=[ "res://.import/skull.png-8f9ad34e6c9a80813450a4ff0f095169.stex" ]
 
 [params]
 
