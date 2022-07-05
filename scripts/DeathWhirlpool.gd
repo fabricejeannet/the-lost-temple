@@ -2,7 +2,7 @@ extends Area2D
 
 var counter = 0.0
 
-export var speed = 100.0
+export var speed = 2.0
 export var radius = 100.0
 export var damage = 100
 

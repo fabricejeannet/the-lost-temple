@@ -9,5 +9,3 @@ func _ready():
 	death_whirlpool = DeathWhirlpool.instance()
 	call_deferred("add_child", death_whirlpool)
 
-func _on_Timer_timeout():
-	death_whirlpool.queue_free()
