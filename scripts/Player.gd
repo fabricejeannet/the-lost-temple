@@ -5,9 +5,12 @@ const MOTION_SPEED = 200.0 # Pixels/second.
 var orientation
 var health_bar:ProgressBar
 
+export var critic_rate = 0.2
+
 onready var walk_animation_manager = $WalkAnimationManager
 onready var health:HealthNode = $HeatlhNode
 onready var sight = $Sight/Sprite
+onready var _random = RandomNumberGenerator.new()
 
 func _ready():
 	health_bar = get_tree().get_root().find_node("HealthBar", true, false)
@@ -29,6 +32,9 @@ func compute_motion() -> Vector2:
 	motion.y /= 2
 	motion = motion.normalized() * MOTION_SPEED
 	return motion
+
+func gets_a_critic() -> bool:
+	return _random.randf_range(0.0, 1.0) < critic_rate
 
 
 func hurt(damage:float, crit:bool) -> void : 

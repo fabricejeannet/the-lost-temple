@@ -11,6 +11,11 @@ func _physics_process(delta):
 	position = Vector2 (cos(counter * speed) * radius,  sin(counter * speed) * radius)
 
 
-func _on_DeathWhirlpool_body_entered(body):
-	if body.is_in_group("enemy"):
-		body.hurt(damage, false)
+#func _on_DeathWhirlpool_body_entered(body):
+#	if body.is_in_group("enemy"):
+#		body.hurt(damage, false)
+
+
+func _on_DeathWhirlpool_area_entered(area):
+	if area.is_in_group("enemy"):
+		area.hurt(damage)

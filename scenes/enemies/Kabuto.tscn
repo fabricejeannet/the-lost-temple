@@ -1,10 +1,12 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scripts/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://scenes/player/HealthNode.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/HealthBar.gd" type="Script" id=3]
 [ext_resource path="res://assets/img/characters/kabutogc5.png" type="Texture" id=4]
 [ext_resource path="res://scenes/WalkAnimationManager.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/player/FCTMgr.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/enemies/DeathNode.tscn" type="PackedScene" id=7]
 
 [sub_resource type="CapsuleShape2D" id=1]
 height = 26.0
@@ -94,7 +96,7 @@ tracks/0/keys = {
 "values": [ 12, 13, 14, 15 ]
 }
 
-[node name="StoneCat" type="KinematicBody2D" groups=["enemy"]]
+[node name="Kabuto" type="Area2D" groups=["enemy"]]
 script = ExtResource( 1 )
 speed = 70
 
@@ -129,3 +131,10 @@ anims/walk_right = SubResource( 6 )
 anims/walk_up = SubResource( 7 )
 
 [node name="WalkAnimationManager" parent="." instance=ExtResource( 5 )]
+
+[node name="FCTMgr" parent="." instance=ExtResource( 6 )]
+
+[node name="DeathNode" parent="." instance=ExtResource( 7 )]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

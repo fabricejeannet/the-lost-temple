@@ -32,8 +32,16 @@ func _add_enemy(enemy:Node2D) -> void:
 
 func _get_random_position() -> Vector2:
 	random.randomize()
+	
 	var xpos = random.randf_range(0, get_viewport().size.x)
-	var ypos = random.randf_range(0, get_viewport().size.y)
+	
+	var ypos
+	var rnd_top_or_bottom = random.randi_range(0,1)
+	if rnd_top_or_bottom == 0:
+		ypos =  get_viewport().size.y
+	else :
+		ypos = 0
+		
 	return Vector2(xpos, ypos)
 
 

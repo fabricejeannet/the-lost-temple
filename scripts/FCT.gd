@@ -1,5 +1,6 @@
 extends Label
 
+signal fct_has_disappeared
 
 func show_value(value, travel, duration, spread, crit=false):
 	text = value
@@ -20,4 +21,5 @@ func show_value(value, travel, duration, spread, crit=false):
 			0.4, Tween.TRANS_BACK, Tween.EASE_IN)
 	$Tween.start()
 	yield($Tween, "tween_all_completed")
+	emit_signal("fct_has_disappeared")
 	queue_free()
