@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/img/spells/skull.png" type="Texture" id=1]
 [ext_resource path="res://scripts/TrailEffect.gd" type="Script" id=2]
 [ext_resource path="res://scripts/DeathWhirlpool.gd" type="Script" id=3]
+[ext_resource path="res://assets/img/light_pattern.png" type="Texture" id=4]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 blend_mode = 1
@@ -11,8 +12,8 @@ blend_mode = 1
 _data = [ Vector2( 0.00943396, 0 ), 0.0, -0.719515, 0, 0, Vector2( 1, 0.890909 ), -1.49899, 0.0, 0, 0 ]
 
 [sub_resource type="Gradient" id=3]
-offsets = PoolRealArray( 0, 0.0276243, 0.187845, 0.370166, 0.944751, 1 )
-colors = PoolColorArray( 0, 0, 0, 0, 0.00408258, 0, 0, 0.344978, 0.153184, 1, 0, 1, 0.133426, 0.4, 0.6, 1, 0.120254, 0, 1, 1, 0, 0, 0, 0 )
+offsets = PoolRealArray( 0, 1.93459e-19, 0.0276243, 0.187845, 0.370166, 0.944751 )
+colors = PoolColorArray( 0, 0, 0, 0, 0, 0, 0, 0, 0.00408258, 0, 0, 0.344978, 0.153184, 1, 0, 1, 0.133426, 0.4, 0.6, 1, 0.120254, 0, 1, 1 )
 
 [sub_resource type="CircleShape2D" id=4]
 radius = 53.2353
@@ -33,9 +34,16 @@ width_curve = SubResource( 2 )
 gradient = SubResource( 3 )
 script = ExtResource( 2 )
 max_points = 50
+coeff_sinusoidal = 2.9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 4 )
+
+[node name="Light2D" type="Light2D" parent="."]
+visible = false
+position = Vector2( 10, 0 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 4 )
 
 [connection signal="area_entered" from="." to="." method="_on_DeathWhirlpool_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_DeathWhirlpool_body_entered"]
