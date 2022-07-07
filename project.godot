@@ -24,6 +24,10 @@ config/name="The Lost Temple"
 run/main_scene="res://scenes/World.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+WalkAnimationManager="*res://scripts/WalkAnimationManager.gd"
+
 [input]
 
 ui_left={

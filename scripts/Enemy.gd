@@ -4,7 +4,6 @@ var player
 var _under_cool_down:bool = false
 var orientation 
 var motion:Vector2
-var walk_animation_manager
 var animation_player
 var colliding_with_player
 var _dying = false
@@ -17,6 +16,7 @@ onready var health_bar:ProgressBar = $HealthBar
 onready var health:HealthNode = $HeatlhNode
 onready var death_node = $DeathNode
 onready var random = RandomNumberGenerator.new()
+onready var walk_animation_manager = get_node("/root/WalkAnimationManager")
 
 func _ready():
 	#warning-ignore:return_value_discarded
@@ -24,7 +24,6 @@ func _ready():
 	#warning-ignore:return_value_discarded
 	health.connect("has_died", self, "dies")
 	
-	walk_animation_manager = get_node_or_null("WalkAnimationManager")
 	animation_player = get_node_or_null("AnimationPlayer")
 	
 	player = get_tree().get_root().find_node("Player", true, false)
@@ -36,9 +35,9 @@ func _physics_process(delta):
 		return
 		
 	motion =  position.direction_to(player.position).normalized()
-	if walk_animation_manager != null:
-		orientation = walk_animation_manager.get_orientation_according_to(motion)
-		walk_animation_manager.play_animation_corresponding_to_orientation(orientation)
+	orientation = walk_animation_manager.get_orientation_according_to(motion)
+	if animation_player != null:
+		walk_animation_manager.play_animation_corresponding_to_orientation(animation_player, orientation)
 	
 	position += motion * speed * delta
 	

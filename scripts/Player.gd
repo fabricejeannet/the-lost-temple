@@ -1,13 +1,18 @@
 extends KinematicBody2D
 
+signal orientation_changed
+
 const MOTION_SPEED = 200.0 # Pixels/second.
 
 var orientation
+var last_orientation
 var health_bar:ProgressBar
 
 export var critic_rate = 0.2
 
-onready var walk_animation_manager = $WalkAnimationManager
+#onready var walk_animation_manager = $WalkAnimationManager
+
+onready var walk_animation_manager = get_node("/root/WalkAnimationManager")
 onready var health:HealthNode = $HeatlhNode
 onready var sight = $Sight/Sprite
 onready var _random = RandomNumberGenerator.new()
@@ -19,8 +24,13 @@ func _ready():
 
 func _physics_process(_delta):
 	var motion = compute_motion()
+	
 	orientation = walk_animation_manager.get_orientation_according_to(motion)
-	walk_animation_manager.play_animation_corresponding_to_orientation(orientation)
+	if orientation != last_orientation:
+		emit_signal("orientation_changed", orientation)
+		last_orientation = orientation
+		
+	walk_animation_manager.play_animation_corresponding_to_orientation($AnimationPlayer, orientation)
 	#warning-ignore:return_value_discarded
 	move_and_slide(motion)
 

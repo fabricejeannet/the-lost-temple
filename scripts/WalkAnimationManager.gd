@@ -8,7 +8,7 @@ enum Orientations {
 	NEUTRAL
 }
 
-onready var animation_player:AnimationPlayer = get_parent().get_node("AnimationPlayer")
+#onready var animation_player:AnimationPlayer = get_parent().get_node("AnimationPlayer")
 
 
 func get_orientation_according_to(motion:Vector2):
@@ -41,7 +41,7 @@ func get_orientation_according_to(motion:Vector2):
 
 
 
-func play_animation_corresponding_to_orientation(orientation) -> void:
+func play_animation_corresponding_to_orientation(animation_player, orientation) -> void:
 	match orientation:
 		Orientations.EAST:
 			animation_player.play("walk_right")
