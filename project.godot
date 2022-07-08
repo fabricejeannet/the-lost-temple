@@ -26,7 +26,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-WalkAnimationManager="*res://scripts/WalkAnimationManager.gd"
+Constants="*res://scripts/singletons/Constants.gd"
 
 [input]
 

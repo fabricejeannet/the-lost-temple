@@ -34,7 +34,6 @@ width_curve = SubResource( 2 )
 gradient = SubResource( 3 )
 script = ExtResource( 2 )
 max_points = 50
-coeff_sinusoidal = 2.9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 4 )
@@ -46,4 +45,3 @@ scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 4 )
 
 [connection signal="area_entered" from="." to="." method="_on_DeathWhirlpool_area_entered"]
-[connection signal="body_entered" from="." to="." method="_on_DeathWhirlpool_body_entered"]

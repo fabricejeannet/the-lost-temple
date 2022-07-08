@@ -78,7 +78,6 @@ stream = ExtResource( 8 )
 autoplay = true
 
 [node name="Fog" type="TileMap" parent="."]
-visible = false
 material = SubResource( 7 )
 tile_set = SubResource( 3 )
 cell_size = Vector2( 32, 32 )

@@ -12,7 +12,7 @@ export var critic_rate = 0.2
 
 #onready var walk_animation_manager = $WalkAnimationManager
 
-onready var walk_animation_manager = get_node("/root/WalkAnimationManager")
+onready var walk_animation_manager = $WalkAnimationManager
 onready var health:HealthNode = $HeatlhNode
 onready var sight = $Sight/Sprite
 onready var _random = RandomNumberGenerator.new()

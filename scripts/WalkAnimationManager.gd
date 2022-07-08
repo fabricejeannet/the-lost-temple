@@ -1,55 +1,58 @@
 extends Node2D
 
-enum Orientations {
-	NORTH,
-	EAST,
-	SOUTH,
-	WEST,
-	NEUTRAL
-}
-
-#onready var animation_player:AnimationPlayer = get_parent().get_node("AnimationPlayer")
-
+onready var Constants = get_node("/root/Constants")
 
 func get_orientation_according_to(motion:Vector2):
 	if motion.x == 0.0 and motion.y == 0.0:
-		return  Orientations.NEUTRAL
+		return  Constants.Orientations.NEUTRAL
 		
 	if motion.y > 0.0 and motion.x == 0.0 :
-		return Orientations.SOUTH
+		return Constants.Orientations.SOUTH
 		
 	if motion.y < 0.0 and motion.x == 0.0 :
-		return Orientations.NORTH
+		return Constants.Orientations.NORTH
 	
 	if motion.x > 0.0 and motion.y == 0.0 :
-		return Orientations.EAST
+		return Constants.Orientations.EAST
 		
 	if motion.x < 0.0 and motion.y == 0.0 :
-		return Orientations.WEST
+		return Constants.Orientations.WEST
 		
 	if motion.x > 0.0 and motion.y > 0.0 :
-		return Orientations.EAST
+		return Constants.Orientations.SOUTH_EAST
 		
 	if motion.x < 0.0 and motion.y > 0.0 :
-		return Orientations.WEST
+		return Constants.Orientations.SOUTH_WEST
 		
 	if motion.x > 0.0 and motion.y < 0.0 :
-		return Orientations.EAST
+		return Constants.Orientations.NORTH_EAST
 		
 	if motion.x < 0.0 and motion.y < 0.0 :
-		return Orientations.WEST
+		return Constants.Orientations.NORTH_WEST
 
 
 
 func play_animation_corresponding_to_orientation(animation_player, orientation) -> void:
+	
+	if animation_player == null:
+		return
+	
 	match orientation:
-		Orientations.EAST:
+		Constants.Orientations.EAST:
 			animation_player.play("walk_right")
-		Orientations.WEST:
+		Constants.Orientations.WEST:
 			animation_player.play("walk_left")
-		Orientations.NORTH:
+		Constants.Orientations.NORTH:
 			animation_player.play("walk_up")
-		Orientations.SOUTH:
+		Constants.Orientations.SOUTH:
 			animation_player.play("walk_down")
-		Orientations.NEUTRAL:
+		Constants.Orientations.NEUTRAL:
 			animation_player.play("idle")	
+		Constants.Orientations.NORTH_EAST:
+			animation_player.play("walk_right")
+		Constants.Orientations.SOUTH_EAST:
+			animation_player.play("walk_right")
+		Constants.Orientations.NORTH_WEST:
+			animation_player.play("walk_left")
+		Constants.Orientations.SOUTH_WEST:
+			animation_player.play("walk_left")

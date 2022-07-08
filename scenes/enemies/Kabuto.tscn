@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scripts/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://scenes/player/HealthNode.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/HealthBar.gd" type="Script" id=3]
 [ext_resource path="res://assets/img/characters/kabutogc5.png" type="Texture" id=4]
+[ext_resource path="res://scenes/WalkAnimationManager.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/player/FCTMgr.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/enemies/DeathNode.tscn" type="PackedScene" id=7]
 
@@ -136,6 +137,8 @@ anims/walk_up = SubResource( 7 )
 [node name="FCTMgr" parent="." instance=ExtResource( 6 )]
 
 [node name="DeathNode" parent="." instance=ExtResource( 7 )]
+
+[node name="WalkAnimationManager" parent="." instance=ExtResource( 5 )]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -6,7 +6,7 @@ func _ready():
 	set_as_toplevel(true)
 	
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var skull_position = get_parent().global_position
 	add_point(skull_position + Vector2(sin(skull_position.x) * coeff_sinusoidal, cos(skull_position.x) * coeff_sinusoidal))
 	if points.size() > max_points :

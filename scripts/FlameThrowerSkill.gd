@@ -3,7 +3,7 @@ extends Node2D
 
 var FlameThrower = preload("res://scenes/skills/FlameThrower.tscn")
 
-onready var walk_animation_manager = get_node("/root/WalkAnimationManager")
+onready var Constants = get_node("/root/Constants")
 onready var player = get_tree().get_root().find_node("Player", true, false)
 
 func _ready():
@@ -17,15 +17,31 @@ func _on_Timer_timeout():
 	
 func _on_player_orientation_changed(orientation) -> void:
 	match orientation:
-		walk_animation_manager.Orientations.EAST:
-			rotation_degrees = 90.0
-			position = Vector2(30.0, 0.0)
-		walk_animation_manager.Orientations.SOUTH:
+		Constants.Orientations.NEUTRAL:
 			rotation_degrees = 180.0
 			position = Vector2(0.0, 30.0)
-		walk_animation_manager.Orientations.WEST:
+		Constants.Orientations.EAST:
+			rotation_degrees = 90.0
+			position = Vector2(30.0, 0.0)
+		Constants.Orientations.SOUTH:
+			rotation_degrees = 180.0
+			position = Vector2(0.0, 30.0)
+		Constants.Orientations.WEST:
 			rotation_degrees = 270.0
 			position = Vector2(-30.0, 0.0)
-		walk_animation_manager.Orientations.NORTH:
+		Constants.Orientations.NORTH:
 			rotation_degrees = 0.0
 			position = Vector2(0.0, -30.0)
+		Constants.Orientations.NORTH_EAST:
+			rotation_degrees = 45.0
+			position = Vector2(30.0, -30.0)
+		Constants.Orientations.SOUTH_EAST:
+			rotation_degrees = 135.0
+			position = Vector2(30.0, 30.0)
+		Constants.Orientations.NORTH_WEST:
+			rotation_degrees = 315.0
+			position = Vector2(-30.0, -30.0)
+		Constants.Orientations.SOUTH_WEST:
+			rotation_degrees = 225.0
+			position = Vector2(-30.0, 30.0)
+

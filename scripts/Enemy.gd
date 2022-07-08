@@ -16,7 +16,7 @@ onready var health_bar:ProgressBar = $HealthBar
 onready var health:HealthNode = $HeatlhNode
 onready var death_node = $DeathNode
 onready var random = RandomNumberGenerator.new()
-onready var walk_animation_manager = get_node("/root/WalkAnimationManager")
+onready var walk_animation_manager = $WalkAnimationManager
 
 func _ready():
 	#warning-ignore:return_value_discarded
@@ -36,8 +36,7 @@ func _physics_process(delta):
 		
 	motion =  position.direction_to(player.position).normalized()
 	orientation = walk_animation_manager.get_orientation_according_to(motion)
-	if animation_player != null:
-		walk_animation_manager.play_animation_corresponding_to_orientation(animation_player, orientation)
+	walk_animation_manager.play_animation_corresponding_to_orientation(animation_player, orientation)
 	
 	position += motion * speed * delta
 	
