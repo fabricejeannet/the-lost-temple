@@ -44,4 +44,4 @@ position = Vector2( 10, 0 )
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 4 )
 
-[connection signal="area_entered" from="." to="." method="_on_DeathWhirlpool_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_DeathWhirlpool_body_entered"]

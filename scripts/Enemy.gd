@@ -1,4 +1,4 @@
-extends Area2D
+extends KinematicBody2D
 
 var player
 var _under_cool_down:bool = false
@@ -7,6 +7,9 @@ var motion:Vector2
 var animation_player
 var colliding_with_player
 var _dying = false
+var path:Array = []
+var navigation:Navigation2D
+var path_line:Line2D
 
 export var speed = 100
 export var damage = 5.0
@@ -25,20 +28,33 @@ func _ready():
 	health.connect("has_died", self, "dies")
 	
 	animation_player = get_node_or_null("AnimationPlayer")
-	
 	player = get_tree().get_root().find_node("Player", true, false)
-
-
-func _physics_process(delta):
+	navigation = get_tree().get_root().find_node("Navigation2D", true, false)
+	path_line = get_node_or_null("PathLine")
 	
+	
+func _physics_process(_delta):
+	path_line.global_position = Vector2.ZERO
 	if _dying:
 		return
 		
-	motion =  position.direction_to(player.position).normalized()
+	path = navigation.get_simple_path(global_position, player.global_position, false)
+	
+	if path.size() > 0:
+		motion = global_position.direction_to(path[1]) * speed
+	
+		if global_position == path[0]:
+			path.pop_front()
+	
+		if path_line != null :
+			path_line.points = path
+		
+#	motion =  position.direction_to(player.position).normalized()
 	orientation = walk_animation_manager.get_orientation_according_to(motion)
 	walk_animation_manager.play_animation_corresponding_to_orientation(animation_player, orientation)
-	
-	position += motion * speed * delta
+
+	#warning-ignore:return_value_discarded
+	move_and_slide(motion)
 	
 	if colliding_with_player:
 		if not _under_cool_down :

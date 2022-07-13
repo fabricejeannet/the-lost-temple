@@ -2,9 +2,10 @@ extends Line2D
 
 export var  max_points = 30
 export(float, 0.0, 10.0, 0.1) var coeff_sinusoidal = 5.0
+
 func _ready():
 	set_as_toplevel(true)
-	
+	clear_points()
 
 func _physics_process(_delta):
 	var skull_position = get_parent().global_position

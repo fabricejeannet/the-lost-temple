@@ -1,7 +1,8 @@
-extends TileMap
+extends Node2D
 
 var StoneCat = preload("res://scenes/enemies/StoneCat.tscn")
 var Kabuto = preload("res://scenes/enemies/Kabuto.tscn")
+var Shuriken = preload("res://scenes/skills/Shuriken.tscn")
 var enemies = []
 var random
 
@@ -24,9 +25,10 @@ func _on_KabutoTimer_timeout():
 
 
 
+
 func _add_enemy(enemy:Node2D) -> void:
 	if enemies.size() < max_enemies:
-		add_child(enemy)
+		$YSort.add_child(enemy)
 		enemies.append(enemy)
 
 
@@ -43,5 +45,7 @@ func _get_random_position() -> Vector2:
 		ypos = 0
 		
 	return Vector2(xpos, ypos)
+
+
 
 

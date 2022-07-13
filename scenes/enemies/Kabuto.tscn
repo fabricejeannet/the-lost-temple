@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scripts/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://scenes/player/HealthNode.tscn" type="PackedScene" id=2]
@@ -9,7 +9,8 @@
 [ext_resource path="res://scenes/enemies/DeathNode.tscn" type="PackedScene" id=7]
 
 [sub_resource type="CapsuleShape2D" id=1]
-height = 26.0
+radius = 7.0
+height = 6.0
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.231373, 0.729412, 0.0705882, 1 )
@@ -96,7 +97,10 @@ tracks/0/keys = {
 "values": [ 12, 13, 14, 15 ]
 }
 
-[node name="Kabuto" type="Area2D" groups=["enemy"]]
+[sub_resource type="CapsuleShape2D" id=8]
+height = 28.0
+
+[node name="Kabuto" type="KinematicBody2D" groups=["enemy"]]
 script = ExtResource( 1 )
 speed = 70
 
@@ -107,7 +111,8 @@ vframes = 4
 frame = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 1, 2 )
+position = Vector2( 1, 18 )
+rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="HeatlhNode" parent="." instance=ExtResource( 2 )]
@@ -140,5 +145,10 @@ anims/walk_up = SubResource( 7 )
 
 [node name="WalkAnimationManager" parent="." instance=ExtResource( 5 )]
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[node name="PathLine" type="Line2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 1, 1 )
+shape = SubResource( 8 )

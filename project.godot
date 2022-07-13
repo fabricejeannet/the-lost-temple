@@ -27,6 +27,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Constants="*res://scripts/singletons/Constants.gd"
+Nodes="*res://scripts/singletons/Nodes.gd"
 
 [input]
 
