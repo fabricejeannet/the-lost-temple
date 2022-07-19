@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal enemy_is_dead
+
 var player
 var _under_cool_down:bool = false
 var orientation 
@@ -89,6 +91,7 @@ func dies() -> void:
 	_dying = true
 	death_node.run()
 	yield(death_node, "is_finished")
+	emit_signal("enemy_is_dead", self)
 	call_deferred("queue_free")
 	
 

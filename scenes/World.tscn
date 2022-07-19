@@ -10,7 +10,7 @@
 [ext_resource path="res://assets/sound/ambiance.mp3" type="AudioStream" id=8]
 [ext_resource path="res://icon.png" type="Texture" id=9]
 [ext_resource path="res://resources/decorative_elements.tres" type="TileSet" id=10]
-[ext_resource path="res://scenes/skills/DeathWhirlpoolSkill.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/skills/SeekAndDestroySkill.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Environment" id=2]
 background_mode = 4
@@ -94,7 +94,7 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 481, 332 )
 
-[node name="DeathWhirlpollSkill" parent="YSort/Player" instance=ExtResource( 11 )]
+[node name="SeekAndDestroySkill" parent="YSort/Player" instance=ExtResource( 12 )]
 
 [node name="LowDecorativeElements" type="TileMap" parent="YSort"]
 tile_set = ExtResource( 10 )

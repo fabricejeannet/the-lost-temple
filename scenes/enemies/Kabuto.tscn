@@ -146,6 +146,7 @@ anims/walk_up = SubResource( 7 )
 [node name="WalkAnimationManager" parent="." instance=ExtResource( 5 )]
 
 [node name="PathLine" type="Line2D" parent="."]
+visible = false
 
 [node name="Area2D" type="Area2D" parent="."]
 

@@ -60,6 +60,7 @@ position = Vector2( 0.5, 4 )
 shape = SubResource( 4 )
 
 [node name="PathLine" type="Line2D" parent="."]
+visible = false
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_body_exited"]
