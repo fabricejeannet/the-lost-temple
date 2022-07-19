@@ -1,8 +1,10 @@
 extends Node
 
-func get_player() :
-		return get_tree().get_root().find_node("Player", true, false)
+var player
+var navigation 
+var world 
 
-
-func get_navigation():
-		return get_tree().get_root().find_node("Navigation2D", true, false)
+func _ready():
+	player = get_tree().get_root().find_node("Player", true, false)
+	navigation = get_tree().get_root().find_node("Navigation2D", true, false)
+	world = get_tree().get_root().find_node("World", true, false)
