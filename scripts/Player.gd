@@ -11,8 +11,6 @@ var xp_bar:ProgressBar
 
 export var critic_rate = 0.2
 
-#onready var walk_animation_manager = $WalkAnimationManager
-
 onready var walk_animation_manager = $WalkAnimationManager
 onready var health:HealthNode = $HeatlhNode
 onready var xp:XPNode = $XPNode

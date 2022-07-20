@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "HealthNode",
 "language": "GDScript",
-"path": "res://scripts/HealthNode.gd"
+"path": "res://scenes/utils/health_node/HealthNode.gd"
 }, {
 "base": "Node2D",
 "class": "XPNode",
@@ -27,7 +27,7 @@ _global_script_class_icons={
 [application]
 
 config/name="The Lost Temple"
-run/main_scene="res://scenes/World.tscn"
+run/main_scene="res://scenes/world/World.tscn"
 config/icon="res://icon.png"
 
 [autoload]
