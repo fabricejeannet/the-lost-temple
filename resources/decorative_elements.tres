@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=26 format=2]
+[gd_resource type="TileSet" load_steps=22 format=2]
 
 [ext_resource path="res://assets/img/TX Props.png" type="Texture" id=1]
 
@@ -18,20 +18,6 @@ polygons = [ PoolIntArray( 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ) ]
 
 [sub_resource type="ConvexPolygonShape2D" id=15]
 points = PoolVector2Array( 1.93173, 36.8953, 9.10257, 36.3138, 18.7929, 25.0731, 18.7929, 25.0731, 37.5922, 17.3208, 37.5922, 14.8013, 58.5233, 15.5765, 59.1047, 18.096, 76.5473, 24.8792, 89.1447, 37.6705, 95.1527, 38.0581, 94.9589, 60.152, 90.3076, 60.3459, 77.1287, 75.6566, 58.3295, 82.0522, 57.9419, 85.3469, 37.5922, 85.1531, 37.2046, 81.0832, 14.723, 72.1681, 6.00168, 59.9583, 1.93173, 59.7644 )
-
-[sub_resource type="NavigationPolygon" id=25]
-vertices = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-
-[sub_resource type="ConvexPolygonShape2D" id=26]
-points = PoolVector2Array( 32, 64, 0, 64, 0, 32, 32, 32 )
-
-[sub_resource type="NavigationPolygon" id=27]
-vertices = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-
-[sub_resource type="ConvexPolygonShape2D" id=28]
-points = PoolVector2Array( 32, 64, 0, 64, 0, 32, 32, 32 )
 
 [sub_resource type="NavigationPolygon" id=17]
 vertices = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
@@ -326,47 +312,3 @@ points = PoolVector2Array( 3.45695, 16.7672, 6.55785, 11.9221, 26.9075, 11.7283,
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 10/z_index = 0
-11/name = "Opened chest"
-11/texture = ExtResource( 1 )
-11/tex_offset = Vector2( 0, 0 )
-11/modulate = Color( 1, 1, 1, 1 )
-11/region = Rect2( 96, 64, 32, 64 )
-11/tile_mode = 0
-11/occluder_offset = Vector2( 0, 0 )
-11/navigation_offset = Vector2( 0, 0 )
-11/navigation = SubResource( 25 )
-11/shape_offset = Vector2( 0, 0 )
-11/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-11/shape = SubResource( 26 )
-11/shape_one_way = false
-11/shape_one_way_margin = 1.0
-11/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 26 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-11/z_index = 0
-12/name = "Closed chest"
-12/texture = ExtResource( 1 )
-12/tex_offset = Vector2( 0, 0 )
-12/modulate = Color( 1, 1, 1, 1 )
-12/region = Rect2( 96, 0, 32, 64 )
-12/tile_mode = 0
-12/occluder_offset = Vector2( 0, 0 )
-12/navigation_offset = Vector2( 0, 0 )
-12/navigation = SubResource( 27 )
-12/shape_offset = Vector2( 0, 0 )
-12/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-12/shape = SubResource( 28 )
-12/shape_one_way = false
-12/shape_one_way_margin = 1.0
-12/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 28 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-12/z_index = 0

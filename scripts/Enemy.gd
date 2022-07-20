@@ -104,3 +104,6 @@ func _on_body_exited(body):
 	if body == player:
 		colliding_with_player = false
 
+
+func is_dying() -> bool:
+	return _dying

@@ -34,14 +34,14 @@ func _physics_process(delta):
 
 	motion = Vector2.ZERO
 	
-	if not is_instance_valid(closest_enemy):
+	if not is_instance_valid(closest_enemy) or closest_enemy.is_dying():
 		closest_enemy = world.get_closest_enemy_to(player.global_position)
 		
 	else:
-		path = navigation.get_simple_path(global_position, closest_enemy.global_position, false)
+		path = navigation.get_simple_path(global_position, closest_enemy.global_position, true)
 		path_line.global_position = Vector2.ZERO
 		if path.size() > 0:
-			motion = global_position.direction_to(path[-1]).normalized() * speed * delta	
+			motion = global_position.direction_to(path[1]).normalized() * speed * delta	
 			
 			if global_position. distance_to(path[0]) < min_distance :
 				path.pop_front()
