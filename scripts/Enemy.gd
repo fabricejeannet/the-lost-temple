@@ -12,6 +12,7 @@ var _dying = false
 var path:Array = []
 var navigation:Navigation2D
 var path_line:Line2D
+var PurpleGem = preload("res://scenes/interactive_tiles/PurpleGem.tscn")
 
 export var speed = 100
 export var damage = 5.0
@@ -22,16 +23,17 @@ onready var health:HealthNode = $HeatlhNode
 onready var death_node = $DeathNode
 onready var random = RandomNumberGenerator.new()
 onready var walk_animation_manager = $WalkAnimationManager
+onready var Nodes = get_node("/root/Nodes")
+
 
 func _ready():
 	#warning-ignore:return_value_discarded
 	health.connect("health_updated", health_bar, "update_values")	
 	#warning-ignore:return_value_discarded
 	health.connect("has_died", self, "dies")
-	
+	player = Nodes.player
+	navigation = Nodes.navigation
 	animation_player = get_node_or_null("AnimationPlayer")
-	player = get_tree().get_root().find_node("Player", true, false)
-	navigation = get_tree().get_root().find_node("Navigation2D", true, false)
 	path_line = get_node_or_null("PathLine")
 	
 	
@@ -90,10 +92,22 @@ func hurt(_damage:float) -> void :
 func dies() -> void:
 	_dying = true
 	death_node.run()
+	_drop_gem()
 	yield(death_node, "is_finished")
 	emit_signal("enemy_is_dead", self)
 	call_deferred("queue_free")
-	
+
+#func _drop_gem() -> void:
+#	var gem = PurpleGem.instance()
+#	Nodes.world.get_node("YSort").call_deferred("add_child", gem)
+#
+#
+func _drop_gem() -> void:
+	var interactive_tiles = Nodes.interactive_tiles
+	var cell_pos = interactive_tiles.world_to_map(global_position)
+	interactive_tiles.set_cellv(cell_pos, interactive_tiles.TileIndex.PURPLE_GEM)
+	interactive_tiles.update_tiles()
+
 
 func _on_body_entered(body):
 	if body == player:

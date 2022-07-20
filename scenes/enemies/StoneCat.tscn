@@ -19,7 +19,8 @@ extents = Vector2( 10.5, 22 )
 
 [node name="StoneCat" type="KinematicBody2D" groups=["enemy"]]
 script = ExtResource( 2 )
-speed = 70
+speed = 150
+damage = 15.0
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -60,7 +61,7 @@ position = Vector2( 0.5, 4 )
 shape = SubResource( 4 )
 
 [node name="PathLine" type="Line2D" parent="."]
-visible = false
+width = 3.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_body_exited"]

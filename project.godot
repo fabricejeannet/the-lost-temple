@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "HealthNode",
 "language": "GDScript",
 "path": "res://scripts/HealthNode.gd"
+}, {
+"base": "Node2D",
+"class": "XPNode",
+"language": "GDScript",
+"path": "res://scripts/XPNode.gd"
 } ]
 _global_script_class_icons={
-"HealthNode": ""
+"HealthNode": "",
+"XPNode": ""
 }
 
 [application]

@@ -128,6 +128,7 @@ max_points = 50
 shape = SubResource( 4 )
 
 [node name="PathLine" type="Line2D" parent="."]
+visible = false
 
 [node name="Timer" type="Timer" parent="."]
 

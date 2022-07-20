@@ -29,6 +29,7 @@ func _add_enemy(enemy:Node2D) -> void:
 	if enemies.size() < max_enemies:
 		$YSort.add_child(enemy)
 		enemies.append(enemy)
+		#warning-ignore:return_value_discarded
 		enemy.connect("enemy_is_dead", self, "_on_enemy_death")
 
 

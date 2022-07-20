@@ -98,11 +98,12 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CapsuleShape2D" id=8]
+radius = 12.0
 height = 28.0
 
 [node name="Kabuto" type="KinematicBody2D" groups=["enemy"]]
 script = ExtResource( 1 )
-speed = 70
+damage = 10.0
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 4 )
@@ -146,7 +147,7 @@ anims/walk_up = SubResource( 7 )
 [node name="WalkAnimationManager" parent="." instance=ExtResource( 5 )]
 
 [node name="PathLine" type="Line2D" parent="."]
-visible = false
+width = 3.0
 
 [node name="Area2D" type="Area2D" parent="."]
 

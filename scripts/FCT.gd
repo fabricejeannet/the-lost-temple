@@ -2,7 +2,7 @@ extends Label
 
 signal fct_has_disappeared
 
-func show_value(value, travel, duration, spread, crit=false):
+func show_value(value, travel, duration, spread, crit=false, color:Color = Color(1,0,0)):
 	text = value
 	# For scaling, set the pivot offset to the center.
 	rect_pivot_offset = rect_size / 2
@@ -16,7 +16,7 @@ func show_value(value, travel, duration, spread, crit=false):
 			Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	if crit:
 		# Set the color and animate size for criticals.
-		modulate = Color(1, 0, 0)
+		modulate = color
 		$Tween.interpolate_property(self, "rect_scale", rect_scale*2, rect_scale,
 			0.4, Tween.TRANS_BACK, Tween.EASE_IN)
 	$Tween.start()
