@@ -16,7 +16,7 @@ offsets = PoolRealArray( 0, 1.93459e-19, 0.0951087, 0.404891, 0.872283, 1 )
 colors = PoolColorArray( 0, 0, 0, 0, 0, 0, 0, 0, 0.968627, 0.784314, 0.282353, 1, 0.910156, 0.587919, 0.032574, 1, 0.800781, 0.0185444, 0.0185444, 1, 0.921569, 0.803922, 0.803922, 0 )
 
 [sub_resource type="CircleShape2D" id=4]
-radius = 16.0
+radius = 34.0147
 
 [sub_resource type="Animation" id=5]
 resource_name = "idle"
@@ -105,6 +105,7 @@ tracks/0/keys = {
 
 [node name="SeekAndDestroy" type="Area2D"]
 script = ExtResource( 1 )
+damage = 5.0
 duration = 60.0
 min_distance = 20.0
 
@@ -112,7 +113,6 @@ min_distance = 20.0
 texture = ExtResource( 2 )
 hframes = 3
 vframes = 4
-frame = 10
 
 [node name="Line2D" type="Line2D" parent="Sprite"]
 modulate = Color( 1.5, 1.5, 1.5, 1 )
@@ -130,7 +130,7 @@ shape = SubResource( 4 )
 [node name="PathLine" type="Line2D" parent="."]
 visible = false
 
-[node name="Timer" type="Timer" parent="."]
+[node name="LifeTimer" type="Timer" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/idle = SubResource( 5 )
@@ -142,4 +142,5 @@ anims/walk_up = SubResource( 9 )
 [node name="WalkAnimationManager" parent="." instance=ExtResource( 4 )]
 
 [connection signal="body_entered" from="." to="." method="_on_SeekAndDestroy_body_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="body_exited" from="." to="." method="_on_SeekAndDestroy_body_exited"]
+[connection signal="timeout" from="LifeTimer" to="." method="_on_Timer_timeout"]
