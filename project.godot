@@ -17,7 +17,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "XPNode",
 "language": "GDScript",
-"path": "res://scripts/XPNode.gd"
+"path": "res://scenes/utils/xp_node/XPNode.gd"
 } ]
 _global_script_class_icons={
 "HealthNode": "",
@@ -32,8 +32,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Constants="*res://scripts/singletons/Constants.gd"
-Nodes="*res://scripts/singletons/Nodes.gd"
+Constants="*res://singletons/Constants.gd"
+Nodes="*res://singletons/Nodes.gd"
 
 [input]
 

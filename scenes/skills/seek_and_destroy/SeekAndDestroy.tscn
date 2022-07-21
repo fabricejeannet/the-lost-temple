@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scenes/skills/seek_and_destroy/SeekAndDestroy.gd" type="Script" id=1]
 [ext_resource path="res://assets/img/characters/5b35d7ad4680a5a9bee22f5db53eafbb.png" type="Texture" id=2]
-[ext_resource path="res://scripts/TrailEffect.gd" type="Script" id=3]
+[ext_resource path="res://scenes/skills/death_whirlpool/TrailEffect.gd" type="Script" id=3]
 [ext_resource path="res://scenes/utils/walk_animation_manager/WalkAnimationManager.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CanvasItemMaterial" id=1]
