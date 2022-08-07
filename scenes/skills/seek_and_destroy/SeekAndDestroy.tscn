@@ -141,6 +141,4 @@ anims/walk_up = SubResource( 9 )
 
 [node name="WalkAnimationManager" parent="." instance=ExtResource( 4 )]
 
-[connection signal="body_entered" from="." to="." method="_on_SeekAndDestroy_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_SeekAndDestroy_body_exited"]
 [connection signal="timeout" from="LifeTimer" to="." method="_on_Timer_timeout"]

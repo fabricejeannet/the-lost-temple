@@ -5,8 +5,8 @@ var ground
 var obstacles
 
 func _ready():
-	ground = Nodes.ground
-	obstacles = Nodes.obstacles
+	ground = Nodes.world.get_node("Ground")
+	obstacles = Nodes.world.get_node("YSort/LowDecorativeElements")
 	var level_cells = ground.get_used_cells_by_id(0) #if tile id 0 
 	var obstacles_cells = obstacles.get_used_cells()
 	for i in obstacles_cells:

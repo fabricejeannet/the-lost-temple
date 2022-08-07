@@ -1,0 +1,81 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/game/Game.gd" type="Script" id=1]
+[ext_resource path="res://scenes/utils/ProgressBar.gd" type="Script" id=2]
+[ext_resource path="res://scenes/world/World.tscn" type="PackedScene" id=3]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.227451, 0.694118, 0.0941176, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.54902, 0.0941176, 0.517647, 1 )
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 1 )
+max_enemies = 4
+min_distance_from_enemy = 400
+
+[node name="Hud" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="Hud"]
+anchor_right = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Hud/Control"]
+anchor_right = 1.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBar" type="ProgressBar" parent="Hud/Control/VBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 14.0
+size_flags_vertical = 3
+custom_styles/fg = SubResource( 2 )
+value = 100.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="XPBar" type="ProgressBar" parent="Hud/Control/VBoxContainer"]
+margin_top = 18.0
+margin_right = 1024.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 14 )
+size_flags_vertical = 3
+custom_styles/fg = SubResource( 3 )
+step = 1.0
+percent_visible = false
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelKillCount" type="Label" parent="Hud/Control/VBoxContainer"]
+margin_top = 36.0
+margin_right = 1024.0
+margin_bottom = 67.0
+text = "0 killed
+"
+
+[node name="BuffContainer" type="HBoxContainer" parent="Hud/Control/VBoxContainer"]
+margin_top = 71.0
+margin_right = 1024.0
+margin_bottom = 71.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="World" parent="." instance=ExtResource( 3 )]
+
+[node name="StoneCatTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="StoneCatTimer" to="." method="_on_StoneCatTimer_timeout"]

@@ -1,41 +1,14 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/skills/shuriken/Shuriken.gd" type="Script" id=1]
 [ext_resource path="res://assets/img/Shuriken.png" type="Texture" id=2]
-[ext_resource path="res://scenes/skills/shuriken/ShurikenTrailEffect.gd" type="Script" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 16.2788
-
-[sub_resource type="Animation" id=5]
-resource_name = "spin"
-length = 0.5
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:rotation_degrees")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 360.0 ]
-}
-
-[sub_resource type="CanvasItemMaterial" id=2]
-blend_mode = 1
-
-[sub_resource type="Curve" id=3]
-_data = [ Vector2( 0.00943396, 0 ), 0.0, -0.719515, 0, 0, Vector2( 0.990741, 0.986487 ), 0.281341, 0.0, 0, 0 ]
-
-[sub_resource type="Gradient" id=4]
-offsets = PoolRealArray( 0, 1.93459e-19, 0.0276243, 0.187845, 0.370166, 0.944751 )
-colors = PoolColorArray( 0, 0, 0, 0, 0, 0, 0, 0, 0.00408258, 0, 0, 0.344978, 0.153184, 1, 0, 1, 0.133426, 0.4, 0.6, 1, 0.120254, 0, 1, 1 )
+radius = 25.02
 
 [node name="Shuriken" type="KinematicBody2D"]
 script = ExtResource( 1 )
+speed = 200.0
 damage = 25
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -43,19 +16,3 @@ texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "spin"
-anims/spin = SubResource( 5 )
-
-[node name="Node2D" type="Node2D" parent="."]
-
-[node name="Line2D" type="Line2D" parent="Node2D"]
-modulate = Color( 1, 2, 2, 1 )
-material = SubResource( 2 )
-position = Vector2( -37.7985, -19.6833 )
-rotation = 1.91979
-points = PoolVector2Array( -245.202, 2.6834, -136.202, -56.3166, -2.42905, -60.2504 )
-width_curve = SubResource( 3 )
-gradient = SubResource( 4 )
-script = ExtResource( 3 )

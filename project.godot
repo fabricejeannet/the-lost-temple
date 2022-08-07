@@ -27,13 +27,14 @@ _global_script_class_icons={
 [application]
 
 config/name="The Lost Temple"
-run/main_scene="res://scenes/world/World.tscn"
+run/main_scene="res://scenes/game/Game.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 Constants="*res://singletons/Constants.gd"
 Nodes="*res://singletons/Nodes.gd"
+Skills="*res://singletons/Skills.gd"
 
 [input]
 

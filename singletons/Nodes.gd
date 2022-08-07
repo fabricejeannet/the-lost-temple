@@ -8,6 +8,7 @@ var xp_bar:ProgressBar
 var interactive_tiles:TileMap
 var ground:TileMap
 var obstacles:TileMap
+var buff_container:HBoxContainer
 
 func _ready():
 	player = get_tree().get_root().find_node("Player", true, false)
@@ -18,3 +19,4 @@ func _ready():
 	interactive_tiles = get_tree().get_root().find_node("InteractiveTiles", true, false)
 	ground = get_tree().get_root().find_node("Ground", true, false)
 	obstacles = get_tree().get_root().find_node("LowDecorativeElements", true, false)
+	buff_container = get_tree().get_root().find_node("BuffContainer", true, false)

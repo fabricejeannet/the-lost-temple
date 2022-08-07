@@ -17,6 +17,7 @@ var PurpleGem = preload("res://scenes/interactive_tiles/purple_gem/PurpleGem.tsc
 export var speed = 100
 export var damage = 5.0
 export var cool_down_duration = 1.0
+export var follow_mouse:bool = false
 
 onready var health_bar:ProgressBar = $HealthBar
 onready var health:HealthNode = $HeatlhNode
@@ -41,19 +42,23 @@ func _physics_process(_delta):
 	path_line.global_position = Vector2.ZERO
 	if _dying:
 		return
+#	if follow_mouse:
+#		path = navigation.get_simple_path(global_position, get_global_mouse_position(), false)		 
+#	else:
+#		path = navigation.get_simple_path(global_position, player.global_position, false)
+#
+#	if path.size() > 0:
+#		motion = global_position.direction_to(path[1]) * speed
+#
+#		if global_position == path[0]:
+#			path.pop_front()
+#
+#		if path_line != null :
+#			path_line.points = path
 		
-	path = navigation.get_simple_path(global_position, player.global_position, false)
-	
-	if path.size() > 0:
-		motion = global_position.direction_to(path[1]) * speed
-	
-		if global_position == path[0]:
-			path.pop_front()
-	
-		if path_line != null :
-			path_line.points = path
+	motion =  position.direction_to(player.position).normalized() * speed
 		
-#	motion =  position.direction_to(player.position).normalized()
+		
 	orientation = walk_animation_manager.get_orientation_according_to(motion)
 	walk_animation_manager.play_animation_corresponding_to_orientation(animation_player, orientation)
 
@@ -104,7 +109,7 @@ func dies() -> void:
 #
 func _drop_gem() -> void:
 	var interactive_tiles = Nodes.interactive_tiles
-	var cell_pos = interactive_tiles.world_to_map(global_position)
+	var cell_pos = interactive_tiles.world_to_map(position)
 	interactive_tiles.set_cellv(cell_pos, interactive_tiles.TileIndex.PURPLE_GEM)
 	interactive_tiles.update_tiles()
 

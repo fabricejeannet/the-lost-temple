@@ -1,6 +1,6 @@
 extends Node2D
 
-var Shuriken = preload("res://scenes/skills/Shuriken.tscn")
+var Shuriken = preload("res://scenes/skills/Shuriken/Shuriken.tscn")
 var player
 
 

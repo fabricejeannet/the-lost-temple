@@ -5,6 +5,7 @@ var counter = 0.0
 export var speed = 2.0
 export var radius = 100.0
 export var damage = 100
+export var icon:Texture
 
 func _physics_process(delta):
 	counter += delta
@@ -16,6 +17,5 @@ func _on_DeathWhirlpool_body_entered(body):
 		body.hurt(damage)
 
 
-#func _on_DeathWhirlpool_area_entered(area):
-#	if area.is_in_group("enemy"):
-#		area.hurt(damage)
+func increase_damage(rate:float) -> void:
+	damage += damage * rate

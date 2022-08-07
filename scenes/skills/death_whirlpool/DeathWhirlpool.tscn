@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/skills/death_whirlpool/TrailEffect.gd" type="Script" id=1]
 [ext_resource path="res://assets/img/spells/skull.png" type="Texture" id=2]
 [ext_resource path="res://scenes/skills/death_whirlpool/DeathWhirlpool.gd" type="Script" id=3]
 [ext_resource path="res://assets/img/light_pattern.png" type="Texture" id=4]
+[ext_resource path="res://assets/img/spells/skull_icon.png" type="Texture" id=5]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 blend_mode = 1
@@ -21,6 +22,7 @@ radius = 53.2353
 [node name="DeathWhirlpool" type="Area2D"]
 scale = Vector2( 0.3, 0.3 )
 script = ExtResource( 3 )
+icon = ExtResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )

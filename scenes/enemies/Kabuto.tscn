@@ -103,7 +103,7 @@ height = 28.0
 
 [node name="Kabuto" type="KinematicBody2D" groups=["enemy"]]
 script = ExtResource( 1 )
-speed = 40
+speed = 20
 damage = 10.0
 
 [node name="Sprite" type="Sprite" parent="."]
