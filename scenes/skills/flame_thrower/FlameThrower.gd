@@ -1,6 +1,6 @@
 extends Area2D
 
-export var damage = 15
+export var damage = 30
 
 var enemies_caught = []
 
@@ -66,3 +66,20 @@ func _on_player_orientation_changed(orientation) -> void:
 
 
 
+
+
+func _on_Flame_body_entered(body):
+	if body.is_in_group("enemy"):
+		enemies_caught.append(body)
+		if timer.is_stopped():
+			timer.start(0.0)
+
+
+
+
+
+func _on_Flame_body_exited(body):
+	if body.is_in_group("enemy"):
+		enemies_caught.erase(body)
+	if enemies_caught.size() < 1 :
+		timer.stop()

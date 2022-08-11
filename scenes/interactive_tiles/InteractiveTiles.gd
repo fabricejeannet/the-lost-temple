@@ -9,17 +9,19 @@ enum TileIndex {
 const NO_CELL = -1
 const ClosedChest = preload ("res://scenes/interactive_tiles/closed_chest/ClosedChest.tscn")
 const LifePotion = preload ("res://scenes/interactive_tiles/life_potion/LifePotion.tscn")
-const PurpleGem = preload ("res://scenes/interactive_tiles/purple_gem/PurpleGem.tscn")
 
-var tile_scene_dictionnary = {
-	TileIndex.CLOSED_CHEST : ClosedChest,	
-	TileIndex.LIFE_POTION : LifePotion,
-	TileIndex.PURPLE_GEM : PurpleGem,
-}
+onready var Items = get_node("/root/Items")
 
+var tile_scene_dictionnary
 
 func _ready():
+	tile_scene_dictionnary = {
+		TileIndex.CLOSED_CHEST : ClosedChest,	
+		TileIndex.LIFE_POTION : LifePotion,
+		TileIndex.PURPLE_GEM : Items.PurpleGem,
+	}
 	update_tiles()
+
 
 
 func update_tiles() -> void:

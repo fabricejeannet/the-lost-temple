@@ -1,6 +1,5 @@
 extends Node2D
 
-
 var FlameThrower = preload("res://scenes/skills/flame_thrower/FlameThrower.tscn")
 
 onready var Nodes = get_node("/root/Nodes")

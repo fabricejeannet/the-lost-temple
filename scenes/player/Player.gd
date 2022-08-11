@@ -18,6 +18,7 @@ onready var sight = $Sight/Sprite
 onready var _random = RandomNumberGenerator.new()
 onready var fct_mgr = $FCTMgr
 onready var Nodes = get_node("/root/Nodes")
+onready var interaction_area = $InteractionArea
 
 
 func _ready():
@@ -31,7 +32,6 @@ func _ready():
 
 func _physics_process(_delta):
 	var motion = compute_motion()
-	
 	orientation = walk_animation_manager.get_orientation_according_to(motion)
 	if orientation != last_orientation:
 		emit_signal("orientation_changed", orientation)
@@ -58,3 +58,9 @@ func gets_a_critic() -> bool:
 func hurt(damage:float, crit:bool) -> void : 
 	fct_mgr.show_value(damage, crit)
 	health.consume(int(damage))
+
+
+func _on_InteractionArea_entered(area):
+	if area is Gem:
+		xp.increase(area.xp)
+		area.free()

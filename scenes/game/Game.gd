@@ -14,8 +14,10 @@ onready var Skills = get_node("/root/Skills")
 onready var kill_count_label = $Hud/Control/VBoxContainer/LabelKillCount
 
 func _ready():
-	add_skill(Skills.death_whirlpool)
-
+	Logger.set_logger_level(Logger.LOG_LEVEL_ALL)
+	Nodes.player.xp.connect("level_up", self, "_on_level_up")
+	add_skill(Skills.DeathWhirlpool.instance())
+#	add_skill(Skills.dragon_breath)
 
 func add_skill(skill:Node2D) -> void:
 	Nodes.player.call_deferred("add_child", skill)
@@ -44,7 +46,7 @@ func add_enemy(enemy) -> void:
 		living_enemies +=1
 
 
-func _on_enemy_death(enemy) -> void:
+func _on_enemy_death(_enemy) -> void:
 	living_enemies -= 1
 	dead_enemies += 1
 	kill_count_label.text = str(dead_enemies) + " killed"
@@ -52,3 +54,6 @@ func _on_enemy_death(enemy) -> void:
 
 func _get_random_position_around_player() -> Vector2:
 	return Vector2(min_distance_from_enemy, 0.0).rotated(rand_range(0.0, 2.0 * PI))
+
+func _on_level_up() -> void:
+	pass

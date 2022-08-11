@@ -1,0 +1,57 @@
+[gd_scene format=2]
+
+[node name="LevelUp" type="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -150.0
+margin_top = -150.0
+margin_right = 150.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 300, 300 )
+rect_rotation = 0.21519
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PopupPanel" type="PopupPanel" parent="."]
+visible = true
+margin_right = 8.0
+margin_bottom = 8.0
+rect_min_size = Vector2( 300, 300 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PopupPanel"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 296.0
+margin_bottom = 296.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="PopupPanel/VBoxContainer"]
+margin_right = 292.0
+margin_bottom = 14.0
+text = "Level up !"
+align = 1
+
+[node name="Label2" type="Label" parent="PopupPanel/VBoxContainer"]
+margin_top = 18.0
+margin_right = 292.0
+margin_bottom = 32.0
+text = "Choose your reward"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ToolButton" type="ToolButton" parent="PopupPanel/VBoxContainer"]
+margin_top = 36.0
+margin_right = 292.0
+margin_bottom = 58.0
