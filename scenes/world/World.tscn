@@ -308,7 +308,6 @@ shader_param/noise_texture = SubResource( 6 )
 
 [node name="World" type="Node2D"]
 script = ExtResource( 10 )
-max_enemies = 5
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 2 )

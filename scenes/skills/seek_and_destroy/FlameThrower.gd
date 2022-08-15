@@ -31,7 +31,7 @@ func _on_Timer_timeout():
 	hurt_enemies_caught_in_flames()
 
 
-func _on_player_orientation_changed(orientation) -> void:
+func _on_orientation_changed(orientation) -> void:
 	match orientation:
 		Constants.Orientations.NEUTRAL:
 			rotation_degrees = 180.0
@@ -62,20 +62,11 @@ func _on_player_orientation_changed(orientation) -> void:
 			position = Vector2(-20.0, 20.0)
 
 
-
-
-
-
-
-
 func _on_Flame_body_entered(body):
 	if body.is_in_group("enemy"):
 		enemies_caught.append(body)
 		if timer.is_stopped():
 			timer.start(0.0)
-
-
-
 
 
 func _on_Flame_body_exited(body):

@@ -19,7 +19,7 @@ var _cooldown_timer:SceneTreeTimer
 export var speed = 100
 export var damage = 5.0
 export var cool_down_duration = 1.0
-export var follow_mouse:bool = false
+export(PackedScene) var gem_type
 
 onready var health_bar:ProgressBar = $HealthBar
 onready var health:HealthNode = $HeatlhNode
@@ -38,7 +38,8 @@ func _ready():
 	navigation = Nodes.navigation
 	animation_player = get_node_or_null("AnimationPlayer")
 	path_line = get_node_or_null("PathLine")
-	
+	if gem_type == null:
+		gem_type = Items.PurpleGem
 	
 func _physics_process(_delta):
 	path_line.global_position = Vector2.ZERO
@@ -96,7 +97,7 @@ func dies() -> void:
 
 
 func _drop_gem() -> void:
-	var gem = Items.PurpleGem.instance()
+	var gem = gem_type.instance()
 	gem.position = self.position
 	Nodes.world.get_node("YSort").call_deferred("add_child", gem)
 	

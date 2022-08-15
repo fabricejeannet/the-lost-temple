@@ -16,9 +16,10 @@ onready var kill_count_label = $Hud/Control/VBoxContainer/LabelKillCount
 func _ready():
 	Logger.set_logger_level(Logger.LOG_LEVEL_ALL)
 	Nodes.player.xp.connect("level_up", self, "_on_level_up")
-	add_skill(Skills.DeathWhirlpool.instance())
-#	add_skill(Skills.dragon_breath)
-
+#	add_skill(Skills.DeathWhirlpool.instance())
+#	add_skill(Skills.DragonBreath.instance())
+	add_skill(Skills.SeekAndDestroy.instance())
+	
 func add_skill(skill:Node2D) -> void:
 	Nodes.player.call_deferred("add_child", skill)
 	var icon = TextureRect.new()
@@ -39,9 +40,10 @@ func _on_StoneCatTimer_timeout():
 	add_enemy(stone_cat)
 
 
-func add_enemy(enemy) -> void:
+func add_enemy(enemy:Enemy) -> void:
 	if living_enemies <= max_enemies:
 		add_child(enemy)
+		#warning-ignore:return_value_discarded
 		enemy.connect("enemy_is_dead", self, "_on_enemy_death")
 		living_enemies +=1
 

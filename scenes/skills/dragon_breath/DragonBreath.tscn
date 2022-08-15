@@ -7,5 +7,4 @@
 rotation = 0.00363435
 script = ExtResource( 1 )
 icon = ExtResource( 2 )
-duration = 6.0
 cooldown = 1.0

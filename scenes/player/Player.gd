@@ -8,6 +8,8 @@ var orientation
 var last_orientation
 var health_bar:ProgressBar
 var xp_bar:ProgressBar
+var enemies_in_pet_defense_area = []
+var closest_enemy:Enemy = null
 
 export var critic_rate = 0.2
 
@@ -64,3 +66,34 @@ func _on_InteractionArea_entered(area):
 	if area is Gem:
 		xp.increase(area.xp)
 		area.free()
+
+
+func _on_PetDefense_body_entered(body):
+	if body is Enemy:
+		enemies_in_pet_defense_area.append(body)
+
+
+func _on_PetDefense_body_exited(body):
+	if body is Enemy : #and not body.is_dying():
+		enemies_in_pet_defense_area.erase(body)
+
+
+func get_closest_enemy() -> Enemy:
+	if enemies_in_pet_defense_area.size() > 0:
+		closest_enemy = enemies_in_pet_defense_area[0]
+		var closest_enemy_position = closest_enemy.position.distance_to(position)
+		for enemy in enemies_in_pet_defense_area:
+			var enemy_distance_to_player = enemy.position.distance_to(position)
+			if enemy_distance_to_player < closest_enemy_position:
+				closest_enemy = enemy
+				closest_enemy_position = enemy_distance_to_player
+				update()
+		return closest_enemy
+	return null
+
+
+
+func _draw():
+	if closest_enemy != null :
+		draw_arc(closest_enemy.position, 20, deg2rad(0.0), deg2rad(360.0), 50, Color.red, 1.0)	
+
