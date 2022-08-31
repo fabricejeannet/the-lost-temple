@@ -16,6 +16,7 @@ var navigation:Navigation2D
 var path_line:Line2D
 var _cooldown_timer:SceneTreeTimer
 
+export var type:String
 export var speed = 100
 export var damage = 5.0
 export var cool_down_duration = 1.0

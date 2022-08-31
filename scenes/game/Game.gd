@@ -5,6 +5,7 @@ const StoneCat = preload("res://scenes/enemies/StoneCat.tscn")
 var active_skills = []
 var living_enemies:int = 0
 var dead_enemies:int = 0
+var dead_enemies_dictionnary = {}
 
 export var max_enemies = 10
 export var min_distance_from_enemy:int = 100
@@ -16,9 +17,9 @@ onready var kill_count_label = $Hud/Control/VBoxContainer/LabelKillCount
 func _ready():
 	Logger.set_logger_level(Logger.LOG_LEVEL_ALL)
 	Nodes.player.xp.connect("level_up", self, "_on_level_up")
-#	add_skill(Skills.DeathWhirlpool.instance())
+	add_skill(Skills.DeathWhirlpool.instance())
 #	add_skill(Skills.DragonBreath.instance())
-	add_skill(Skills.SeekAndDestroy.instance())
+#	add_skill(Skills.SeekAndDestroy.instance())
 	
 func add_skill(skill:Node2D) -> void:
 	Nodes.player.call_deferred("add_child", skill)
@@ -51,6 +52,13 @@ func add_enemy(enemy:Enemy) -> void:
 func _on_enemy_death(_enemy) -> void:
 	living_enemies -= 1
 	dead_enemies += 1
+	
+	var actual_count = dead_enemies_dictionnary.get(_enemy.type)
+	var new_count:int  = 1
+	if actual_count == null:
+		actual_count = 0
+	dead_enemies_dictionnary[_enemy.type] = actual_count + new_count
+
 	kill_count_label.text = str(dead_enemies) + " killed"
 
 

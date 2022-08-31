@@ -20,6 +20,7 @@ extents = Vector2( 10.5, 22 )
 
 [node name="StoneCat" type="KinematicBody2D" groups=["enemy"]]
 script = ExtResource( 8 )
+type = "StoneCat"
 gem_type = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]

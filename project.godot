@@ -118,7 +118,7 @@ Items="*res://singletons/Items.gd"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/gs_logger/plugin.cfg", "res://addons/gut/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/gs_logger/plugin.cfg" )
 
 [global]
 
