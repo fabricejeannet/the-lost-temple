@@ -1,6 +1,6 @@
 extends Line2D
 
-export var  max_points = 30
+var  max_points
 export(float, 0.0, 10.0, 0.1) var coeff_sinusoidal = 5.0
 
 func _enter_tree():
@@ -9,7 +9,7 @@ func _enter_tree():
 
 func _ready():
 	set_as_toplevel(true)
-
+	max_points = get_parent().get_parent().max_points
 
 func _physics_process(_delta):
 	var skull_position = get_parent().global_position

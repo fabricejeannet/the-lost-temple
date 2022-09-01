@@ -64,8 +64,9 @@ func hurt(damage:float, crit:bool) -> void :
 
 func _on_InteractionArea_entered(area):
 	if area is Gem:
-		xp.increase(area.xp)
-		area.free()
+		area.fly_toward_player()
+
+
 
 
 func _on_PetDefense_body_entered(body):

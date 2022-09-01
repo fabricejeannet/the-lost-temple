@@ -12,6 +12,7 @@ export var min_distance_from_enemy:int = 100
 
 onready var Nodes = get_node("/root/Nodes")
 onready var Skills = get_node("/root/Skills")
+onready var Items = get_node("/root/Items")
 onready var kill_count_label = $Hud/Control/VBoxContainer/LabelKillCount
 
 func _ready():
@@ -21,6 +22,12 @@ func _ready():
 #	add_skill(Skills.DragonBreath.instance())
 #	add_skill(Skills.SeekAndDestroy.instance())
 	
+	for i in 100:
+		var gem = Items.RedGem.instance()
+		gem.position = Nodes.player.position + _get_random_position_around_player()
+		add_child(gem)
+	
+
 func add_skill(skill:Node2D) -> void:
 	Nodes.player.call_deferred("add_child", skill)
 	var icon = TextureRect.new()

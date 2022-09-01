@@ -82,7 +82,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CircleShape2D" id=7]
-radius = 36.0555
+radius = 169.027
 
 [sub_resource type="CircleShape2D" id=8]
 radius = 200.0
@@ -139,6 +139,7 @@ shape = SubResource( 7 )
 [node name="PetDefense" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PetDefense"]
+visible = false
 shape = SubResource( 8 )
 
 [connection signal="area_entered" from="InteractionArea" to="." method="_on_InteractionArea_entered"]

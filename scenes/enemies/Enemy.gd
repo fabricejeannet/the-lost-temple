@@ -75,6 +75,10 @@ func _start_cool_down() -> void:
 
 
 func hurt(_damage:float) -> void : 
+	
+	if is_dying():
+		return
+	
 	random.randomize()
 	var critic = player.gets_a_critic()
 	if critic :

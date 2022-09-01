@@ -33,7 +33,6 @@ points = PoolVector2Array( -276, -3, -147, -18, -76, 12, 0, 2 )
 width_curve = SubResource( 2 )
 gradient = SubResource( 3 )
 script = ExtResource( 2 )
-max_points = 50
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 4 )

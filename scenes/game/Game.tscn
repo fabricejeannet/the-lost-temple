@@ -12,6 +12,7 @@ bg_color = Color( 0.54902, 0.0941176, 0.517647, 1 )
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
+max_enemies = 50
 min_distance_from_enemy = 400
 
 [node name="Hud" type="CanvasLayer" parent="."]
