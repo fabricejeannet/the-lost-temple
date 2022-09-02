@@ -12,7 +12,7 @@ bg_color = Color( 0.54902, 0.0941176, 0.517647, 1 )
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
-max_enemies = 50
+max_enemies = 0
 min_distance_from_enemy = 400
 
 [node name="Hud" type="CanvasLayer" parent="."]
@@ -21,18 +21,12 @@ min_distance_from_enemy = 400
 anchor_right = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Hud/Control"]
 anchor_right = 1.0
 margin_bottom = 50.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HealthBar" type="ProgressBar" parent="Hud/Control/VBoxContainer"]
 margin_right = 1024.0
@@ -73,9 +67,20 @@ margin_bottom = 71.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="HBoxContainer" type="HBoxContainer" parent="Hud/Control/VBoxContainer"]
+margin_top = 75.0
+margin_right = 1024.0
+margin_bottom = 95.0
+
+[node name="Button" type="Button" parent="Hud/Control/VBoxContainer/HBoxContainer"]
+margin_right = 103.0
+margin_bottom = 20.0
+text = "Level up Skills"
+
 [node name="World" parent="." instance=ExtResource( 3 )]
 
 [node name="StoneCatTimer" type="Timer" parent="."]
 autostart = true
 
+[connection signal="pressed" from="Hud/Control/VBoxContainer/HBoxContainer/Button" to="." method="_on_Button_pressed"]
 [connection signal="timeout" from="StoneCatTimer" to="." method="_on_StoneCatTimer_timeout"]

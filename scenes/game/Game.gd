@@ -16,7 +16,7 @@ onready var Items = get_node("/root/Items")
 onready var kill_count_label = $Hud/Control/VBoxContainer/LabelKillCount
 
 func _ready():
-	Logger.set_logger_level(Logger.LOG_LEVEL_ALL)
+	Logger.set_logger_level(Logger.LOG_LEVEL_DEBUG)
 	Nodes.player.xp.connect("level_up", self, "_on_level_up")
 	add_skill(Skills.DeathWhirlpool.instance())
 #	add_skill(Skills.DragonBreath.instance())
@@ -74,3 +74,9 @@ func _get_random_position_around_player() -> Vector2:
 
 func _on_level_up() -> void:
 	pass
+
+
+func _on_Button_pressed():
+	Logger.debug("Level up Button pressed")
+	for skill in active_skills:
+		skill.level_up()

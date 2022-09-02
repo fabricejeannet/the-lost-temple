@@ -1,12 +1,15 @@
 extends Area2D
 
+class_name Skull
+
 var counter = 0.0
 var max_points:int
 var angle
+var speed
+var radius
+var damage
+var bump_distance
 
-export var speed = 200
-export var radius = 100.0
-export var damage = 100
 
 func _physics_process(delta):
 	counter += delta
@@ -15,6 +18,7 @@ func _physics_process(delta):
 
 func _on_DeathWhirlpool_body_entered(body):
 	if body.is_in_group("enemy"):
+		body.bump(bump_distance)	
 		body.hurt(damage)
 
 

@@ -3,6 +3,7 @@ extends Node
 class_name Skill
 
 var level:int = 0
+var improvements = []
 
 export var icon:Texture
 export var duration:float = 6.0
@@ -15,6 +16,14 @@ func get_level() -> int:
 
 func level_up() -> void:
 	level += 1
+	Logger.debug("\tlevel is now " + str(level))
+	for method in improvements[level - 1].keys():
+		Logger.fine("\t->" + method)
+		call(method, improvements[level - 1].get(method))
+
+
+func max_level_not_reached() -> bool:
+	return level < improvements.size()
 
 
 func _ready():
@@ -39,3 +48,5 @@ func perform_skill():
 
 func cancel_skill():
 	pass
+
+

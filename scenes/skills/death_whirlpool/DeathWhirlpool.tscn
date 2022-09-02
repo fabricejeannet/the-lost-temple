@@ -6,6 +6,7 @@
 [node name="DeathWhirlpool" type="Node2D"]
 script = ExtResource( 3 )
 icon = ExtResource( 5 )
-duration = 60.0
+duration = 8.0
 cooldown = 2.0
-skull_count = 5
+speed = 200
+radius = 50.0

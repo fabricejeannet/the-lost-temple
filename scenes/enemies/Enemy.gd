@@ -119,3 +119,15 @@ func _on_body_exited(body):
 
 func is_dying() -> bool:
 	return _dying
+
+
+func bump(distance:int) -> void:
+	if position.x < Nodes.player.position.x:
+		position.x -= distance
+	else:
+		position.x += distance
+	
+	if position.y < Nodes.player.position.y:
+		position.y -= distance
+	else:
+		position.y += distance
