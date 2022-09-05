@@ -80,6 +80,7 @@ func level_up() :
 		.level_up()
 		update_skill()
 
+
 func increase_speed(rate:float) -> void:
 	speed += speed * rate
 	Logger.debug("\tspeed is now " + str(speed))

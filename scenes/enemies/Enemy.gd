@@ -104,7 +104,7 @@ func dies() -> void:
 func _drop_gem() -> void:
 	var gem = gem_type.instance()
 	gem.position = self.position
-	Nodes.world.get_node("YSort").call_deferred("add_child", gem)
+	Nodes.infinite_world.get_node("YSort").call_deferred("add_child", gem)
 	
 
 func _on_body_entered(body):

@@ -122,6 +122,10 @@ Skills="*res://singletons/Skills.gd"
 Logger="*res://addons/gs_logger/logger.gd"
 Items="*res://singletons/Items.gd"
 
+[display]
+
+window/size/height=1024
+
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/gs_logger/plugin.cfg" )
