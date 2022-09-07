@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
+[ext_resource path="res://resources/grass_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/world/World.gd" type="Script" id=10]
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=14]
 
@@ -9,7 +10,6 @@ glow_enabled = true
 glow_hdr_threshold = 1.5
 
 [node name="InfiniteWorld" type="Node2D"]
-script = ExtResource( 10 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 1023.0 ],
 "_edit_vertical_guides_": [  ]
@@ -19,7 +19,10 @@ __meta__ = {
 environment = SubResource( 2 )
 
 [node name="Level" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
 format = 1
+script = ExtResource( 10 )
 
 [node name="YSort" type="YSort" parent="."]
 

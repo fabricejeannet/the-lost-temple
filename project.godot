@@ -121,7 +121,6 @@ Nodes="*res://singletons/Nodes.gd"
 Skills="*res://singletons/Skills.gd"
 Logger="*res://addons/gs_logger/logger.gd"
 Items="*res://singletons/Items.gd"
-Levels="*res://singletons/Levels.gd"
 
 [display]
 
