@@ -127,6 +127,7 @@ texture = ExtResource( 7 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+zoom = Vector2( 2, 2 )
 
 [node name="XPNode" parent="." instance=ExtResource( 9 )]
 

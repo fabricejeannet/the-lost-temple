@@ -95,6 +95,7 @@ func get_closest_enemy() -> Enemy:
 
 
 func _draw():
+
 	if closest_enemy != null :
 		draw_arc(closest_enemy.position, 20, deg2rad(0.0), deg2rad(360.0), 50, Color.red, 1.0)	
 
