@@ -9,20 +9,25 @@ var virtual_x
 var virtual_y
 var nb_x = 0
 var nb_y = 0
+var width 
+var height
 var cell_positions
 
 func _ready():
 	selected_level = Levels.instance().get_node("0")
 	cell_positions = selected_level.get_used_cells()
-	set_level()
+	width = selected_level.get_used_rect().size.x
+	height = selected_level.get_used_rect().size.y
+	
+	Logger.debug("Level size : " + str(width) + " x " + str(height))
+	prepare_tilemap(width / 2, height / 2)
 
 func _process(_delta):
 	position_on_map = world_to_map(Nodes.player.position)
 	
 	if position_on_map != old_position_on_map:
-		virtual_x = fmod(position_on_map.x, 32)
-		virtual_y = fmod(position_on_map.y, 32)
-	
+		compute_virtual_position()
+		
 		if virtual_x == 0 :
 			if position_on_map.x > old_position_on_map.x :
 				nb_x += 1
@@ -34,37 +39,38 @@ func _process(_delta):
 				nb_y += 1
 			else:
 				nb_y -= 1
-		
-#		if virtual_x > 23 or virtual_y > 23: 
-#			for y in range(0, virtual_y + 1 ):
-#				for x in range(0, virtual_x + 1 ):
-#					set_cell(32 * nb_x + x, 32 * nb_y + y, selected_level.get_cell(x, y))
-#
-		
-		if virtual_x > 23 : 
-			for y in range (-16, 17):
-				for x in range(0, virtual_x + 1 ):
-					set_cell(32 * (nb_x + 1) + x, virtual_y + y, selected_level.get_cell(x, get_y(virtual_y + y)))
+				
+		if  virtual_x == 0 or virtual_x == width / 2 or virtual_x == width:
+			prepare_tilemap(virtual_x, virtual_y)
 
-#		if virtual_y > 23 : 
-#			for y in range(0, virtual_y + 1 ):
-#				for x in range (-16, 16):
-#					set_cell(virtual_x + x * (nb_x + 1), 32 * (nb_y + 1) + y, selected_level.get_cell(virtual_x + x, y))	
-		
 		Logger.debug("Map position : " + str(position_on_map))
-		Logger.debug("\tvirtual x = " + str(virtual_x) + "\t nb_x = " + str(nb_x))
-		Logger.debug("\tvirtual y = " + str(virtual_y) + "\t nb_y = " + str(nb_y))
+		Logger.debug("Virtual position :  (" + str(virtual_x) + ", " + str(virtual_y) + ")")
 		
 		old_position_on_map = position_on_map
-	
-		
-func get_y(value:int) -> int :
-	var a = int(fmod(value, 32))
-	if a < 0:
-		a += 32
-	return a
-	
-	
+
+
+func compute_virtual_position() -> void:
+	virtual_x = fmod(position_on_map.x, width)
+	virtual_y = fmod(position_on_map.y, height)
+
+
+func get_coord(pos:Vector2) -> Vector2 :
+	var ax = int(fmod(pos.x, width))
+	var ay = int(fmod(pos.y, height))
+	if ax < 0:
+		ax += width
+	if ay < 0:
+		ay += height
+			
+	return Vector2(ax, ay)
+
+
+func prepare_tilemap(_x:int, _y:int) -> void :
+	clear()
+	Logger.debug("x range = " + str(_x - width) + " to " + str(_x + width + 1))
+	for x in range (_x - width, _x + width + 1):
+		for y in range (_y - height, _y + height + 1):
+			set_cell(width * nb_x + x, height * nb_y + y, selected_level.get_cellv(get_coord(Vector2(x,y))))
 
 
 func set_level() -> void :
