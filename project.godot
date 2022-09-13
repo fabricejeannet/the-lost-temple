@@ -128,7 +128,7 @@ window/size/height=1024
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/gs_logger/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/gs_logger/plugin.cfg", "res://addons/gut/plugin.cfg" )
 
 [global]
 
