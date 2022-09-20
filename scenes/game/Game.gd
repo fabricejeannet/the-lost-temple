@@ -22,10 +22,10 @@ func _ready():
 #	add_skill(Skills.DragonBreath.instance())
 #	add_skill(Skills.SeekAndDestroy.instance())
 	
-	for i in 100:
-		var gem = Items.RedGem.instance()
-		gem.position = Nodes.player.position + _get_random_position_around_player()
-		add_child(gem)
+#	for i in 100:
+#		var gem = Items.RedGem.instance()
+#		gem.position = Nodes.player.position + _get_random_position_around_player()
+#		add_child(gem)
 	
 
 func add_skill(skill:Node2D) -> void:
@@ -49,7 +49,7 @@ func _on_StoneCatTimer_timeout():
 
 
 func add_enemy(enemy:Enemy) -> void:
-	if living_enemies <= max_enemies:
+	if living_enemies < max_enemies:
 		add_child(enemy)
 		#warning-ignore:return_value_discarded
 		enemy.connect("enemy_is_dead", self, "_on_enemy_death")
